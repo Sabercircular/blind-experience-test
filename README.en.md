@@ -129,7 +129,7 @@ In one line: blind testing discovers; deterministic testing keeps the problem fr
 
 [Superpowers](https://github.com/obra/superpowers) asks whether the builder agent followed the right engineering process. Its TDD starts with behavior you already know you want: write a failing test, then the minimum implementation. Its skill-testing method follows the same shape—watch an agent fail without the skill, then use pressure scenarios to see whether the agent holds the rule.
 
-Blind Experience Test does not test the builder agent. It tests the running product. The tester does not know the source, known bugs, or expected answer. It watches how a first-time user understands the product, where they go wrong, and what actually happens to objects and state after each action.
+Blind Experience Test does not test the builder agent. It tests the running product. The tester does not know the source, known bugs, expected answer, or another tester's findings. It watches how a first-time user understands the product, where they go wrong, and what actually happens to objects and state after each action.
 
 The shortest distinction is: **Superpowers makes the builder prove it implemented the known thing correctly. Blind Experience Test sends in a stranger to find what you did not know was wrong.**
 

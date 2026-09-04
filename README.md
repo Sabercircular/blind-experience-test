@@ -128,7 +128,7 @@ Widget test、integration test、XCTest、Maestro 和 Playwright 负责守住已
 
 [Superpowers](https://github.com/obra/superpowers) 关心的是开发 Agent 有没有按正确的方法工作。它的 TDD 从一个已经知道的行为开始：先写一个会失败的测试，再写最小实现；它对 Skill 的测试也类似，先看没有 Skill 时 Agent 会怎样失败，再用压力场景验证 Agent 能不能守住规则。
 
-Blind Experience Test 测的不是开发 Agent，而是正在运行的产品。测试者不知道源码、已知 Bug 和标准答案。它要找的是用户第一次进来会怎样理解、怎样走错，以及一次点击以后，屏幕背后的对象和状态到底发生了什么。
+Blind Experience Test 测的不是开发 Agent，而是正在运行的产品。测试者不知道源码、已知 Bug、标准答案和其他测试者的发现。它要找的是用户第一次进来会怎样理解、怎样走错，以及一次点击以后，屏幕背后的对象和状态到底发生了什么。
 
 所以最短的区别是：**Superpowers 让开发 Agent 证明自己把已知的东西做对；Blind Experience Test 让陌生 Agent 找到你还不知道哪里做错了。**
 
