@@ -1,0 +1,4 @@
+interface:
+  display_name: "Blind Experience Test"
+  short_description: "Test one core journey like a first-time user"
+  default_prompt: "Use $blind-experience-test to test this app."

@@ -1,0 +1,102 @@
+{
+  "run_id": "state-audit-seed-1",
+  "role": "state_audit",
+  "seed": 1,
+  "subject_sha": "0123456789abcdef0123456789abcdef01234567",
+  "surface": "production_web",
+  "surface_fidelity": "production web entrypoint; isolated namespace; object lifecycle unchanged",
+  "persona": "First-time user who wants to save one note and find it after returning",
+  "goal": "Create one note, leave, and find the same note again",
+  "completion": "success",
+  "steps": [
+    {
+      "index": 1,
+      "observation": "Home shows Notes (0) and a New button",
+      "action": "open the new-note screen",
+      "result": "editor opens with an empty title"
+    },
+    {
+      "index": 2,
+      "observation": "editor has no meaningful input",
+      "action": "go Back without typing",
+      "result": "Home shows Notes (1)"
+    },
+    {
+      "index": 3,
+      "observation": "Home shows one Untitled row",
+      "action": "open New, enter milk, and save",
+      "result": "Home shows Notes (2), including milk"
+    },
+    {
+      "index": 4,
+      "kind": "lifecycle",
+      "observation": "Home shows Notes (2), including milk",
+      "action": "reload the production Web app",
+      "result": "Home still shows Notes (2), including milk"
+    }
+  ],
+  "findings": [
+    {
+      "title": "Leaving an empty editor creates an Untitled note",
+      "claim": "Entering the editor and leaving without input adds a visible object",
+      "visible_evidence": "The visible count changed from 0 to 1 after step 2",
+      "impact": "Users collect notes they did not intend to create",
+      "severity": "medium",
+      "confidence": "high",
+      "inference": "Automatic drafts may be intentional; the controller must compare the product's draft contract",
+      "reproduction_steps": [
+        "start from Notes (0)",
+        "open New",
+        "go Back without input",
+        "observe Notes (1)"
+      ],
+      "claim_scope": "shared"
+    }
+  ],
+  "unknowns": [
+    "Whether a native process relaunch preserves the same objects"
+  ],
+  "action_count": 3,
+  "elapsed_time_ms": 185000,
+  "environment_blockers": [],
+  "reset_receipt": {
+    "namespace": "qa-notes-state-audit-seed-1",
+    "before": "Notes (0)",
+    "method": "fresh browser context and isolated namespace"
+  },
+  "evidence_refs": [
+    "state-audit-synthetic.json#step-2",
+    "state-audit-synthetic.json#object-ledgers"
+  ],
+  "object_ledgers": [
+    {
+      "before_step": 1,
+      "count": 0,
+      "labels": []
+    },
+    {
+      "after_step": 2,
+      "count": 1,
+      "labels": [
+        "Untitled"
+      ]
+    },
+    {
+      "after_step": 3,
+      "count": 2,
+      "labels": [
+        "milk",
+        "Untitled"
+      ]
+    },
+    {
+      "after_step": 4,
+      "count": 2,
+      "labels": [
+        "milk",
+        "Untitled"
+      ]
+    }
+  ],
+  "lifecycle_action_count": 1
+}
